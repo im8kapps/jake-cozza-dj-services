@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional DJ services in Indianapolis. Jake Cozza provides expert DJ services for weddings, corporate events, and private parties. Request your quote today.">
+    <meta name="keywords" content="DJ Indianapolis, wedding DJ Indianapolis, Indianapolis DJ services, corporate DJ Indianapolis">
+    <meta name="author" content="Jake Cozza">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jakecozzadj.com/">
+    <meta property="og:title" content="Jake Cozza DJ Services - Professional DJ in Indianapolis">
+    <meta property="og:description" content="Making your special moments unforgettable. Professional DJ services for weddings, corporate events, and private parties in the greater Indianapolis area.">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jakecozzadj.com/">
+    <meta property="twitter:title" content="Jake Cozza DJ Services - Professional DJ in Indianapolis">
+    <meta property="twitter:description" content="Making your special moments unforgettable. Professional DJ services for weddings, corporate events, and private parties in the greater Indianapolis area.">
+    
+    <title>Jake Cozza DJ Services - Professional DJ in Indianapolis</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="styles.css" as="style">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>">
+    
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav__brand">
+                <h1 class="nav__logo">Jake Cozza DJ</h1>
+            </div>
+            <div class="nav__menu">
+                <a href="#about" class="nav__link">About</a>
+                <a href="#services" class="nav__link">Services</a>
+                <a href="#contact" class="nav__link">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero__container">
+            <div class="hero__content">
+                <h1 class="hero__title">Professional DJ Services in Indianapolis</h1>
+                <p class="hero__subtitle">Making your special moments unforgettable with the perfect soundtrack for your celebration</p>
+                <div class="hero__location">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <span>Serving Greater Indianapolis Area</span>
+                </div>
+                <button class="hero__cta btn btn--primary" onclick="openQuoteModal()">REQUEST QUOTE</button>
+            </div>
+            <div class="hero__image">
+                <div class="hero__image-placeholder">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                    </svg>
+                    <p>Professional Photo<br>Coming Soon</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about__content">
+                <div class="about__text">
+                    <h2 class="about__title">About Jake</h2>
+                    <p class="about__description">
+                        With over 10 years of experience in the entertainment industry, Jake Cozza brings passion, 
+                        professionalism, and an extensive music library to every event. From intimate gatherings to 
+                        grand celebrations, Jake ensures your special day has the perfect soundtrack.
+                    </p>
+                    <div class="about__highlights">
+                        <div class="highlight">
+                            <span class="highlight__number">10+</span>
+                            <span class="highlight__text">Years Experience</span>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight__number">500+</span>
+                            <span class="highlight__text">Events Hosted</span>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight__number">100%</span>
+                            <span class="highlight__text">Client Satisfaction</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about__image">
+                    <div class="about__image-placeholder">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                        <p>Professional<br>Headshot</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="services__title">Services</h2>
+            <div class="services__grid">
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-card__title">Weddings</h3>
+                    <p class="service-card__description">
+                        Create the perfect atmosphere for your special day with customized playlists and seamless transitions.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-card__title">Corporate Events</h3>
+                    <p class="service-card__description">
+                        Professional entertainment for company parties, conferences, and networking events.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-card__title">Private Parties</h3>
+                    <p class="service-card__description">
+                        Birthday parties, anniversaries, and celebrations that keep your guests dancing all night long.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+        <div class="container">
+            <h2 class="why-choose__title">Why Choose Jake?</h2>
+            <div class="why-choose__grid">
+                <div class="feature">
+                    <div class="feature__icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zm2.5-9H19v2h1.5v16.5H3.5V4H5V2h1.5v2h11V2H19v2h1.5z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature__title">Professional & Reliable</h3>
+                    <p class="feature__description">Always on time, properly dressed, and prepared with backup equipment.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature__icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature__title">Extensive Music Library</h3>
+                    <p class="feature__description">Thousands of songs across all genres and decades to satisfy every guest.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature__icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature__title">Personalized Experience</h3>
+                    <p class="feature__description">Custom playlists and announcements tailored to your event and preferences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact__content">
+                <div class="contact__info">
+                    <h2 class="contact__title">Ready to Book Your Event?</h2>
+                    <p class="contact__description">
+                        Get your custom quote today and let's make your event unforgettable!
+                    </p>
+                    <div class="contact__details">
+                        <div class="contact__item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                            <a href="tel:+13124388771" class="contact__link">(312) 438-8771</a>
+                        </div>
+                        <div class="contact__item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                            <a href="mailto:jakecozzadj@gmail.com" class="contact__link">jakecozzadj@gmail.com</a>
+                        </div>
+                        <div class="contact__item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            <span>Greater Indianapolis Area</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact__cta">
+                    <button class="btn btn--primary btn--large" onclick="openQuoteModal()">REQUEST QUOTE</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Modal -->
+    <div class="modal" id="quoteModal">
+        <div class="modal__overlay" onclick="closeQuoteModal()"></div>
+        <div class="modal__content">
+            <div class="modal__header">
+                <h3 class="modal__title">Request a Quote</h3>
+                <button class="modal__close" onclick="closeQuoteModal()" aria-label="Close modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                    </svg>
+                </button>
+            </div>
+            <form class="quote-form" id="quoteForm" name="quote-requests" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="quote-requests">
+                <div class="honeypot">
+                    <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name" class="form-label">Full Name *</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                    <span class="form-error" id="nameError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address *</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                    <span class="form-error" id="emailError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" class="form-input" required>
+                    <span class="form-error" id="phoneError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventDate" class="form-label">Event Date *</label>
+                    <input type="date" id="eventDate" name="eventDate" class="form-input" required>
+                    <span class="form-error" id="eventDateError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventType" class="form-label">Event Type *</label>
+                    <select id="eventType" name="eventType" class="form-input" required>
+                        <option value="">Select Event Type</option>
+                        <option value="Wedding">Wedding</option>
+                        <option value="Corporate">Corporate Event</option>
+                        <option value="Private Party">Private Party</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <span class="form-error" id="eventTypeError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" class="form-label">Additional Details</label>
+                    <textarea id="message" name="message" class="form-input form-textarea" rows="4" placeholder="Tell us more about your event..."></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn--secondary" onclick="closeQuoteModal()">Cancel</button>
+                    <button type="submit" class="btn btn--primary">Send Quote Request</button>
+                </div>
+            </form>
+            
+            <div class="quote-success" id="quoteSuccess" style="display: none;">
+                <div class="quote-success__icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </div>
+                <h3 class="quote-success__title">Thank You!</h3>
+                <p class="quote-success__message">Your quote request has been received. Jake will contact you within 24 hours to discuss your event details.</p>
+                <button class="btn btn--primary" onclick="closeQuoteModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <p class="footer__text">&copy; 2025 Jake Cozza DJ Services. All rights reserved.</p>
+                <p class="footer__text">Serving the Greater Indianapolis Area</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+        
+        // Track quote button clicks
+        function trackQuoteClick() {
+            gtag('event', 'quote_request_started', {
+                event_category: 'engagement',
+                event_label: 'quote_modal_opened'
+            });
+        }
+    </script>
+</body>
+</html>
