@@ -185,10 +185,31 @@ function handleFormSubmit(e) {
     submitButton.textContent = 'Sending...';
     submitButton.disabled = true;
     
-    // Prepare form data
+    // Prepare form data for Netlify Forms
     const formData = new FormData(e.target);
     
-    // Submit to Netlify (or your chosen service)
+    // Debug: Log form data
+    console.log('Form data being submitted:', Object.fromEntries(formData));
+    
+    // Check if running locally (for development)
+    const isLocalhost = window.location.hostname === 'localhost' || 
+                       window.location.hostname === '127.0.0.1' || 
+                       window.location.protocol === 'file:';
+    
+    if (isLocalhost) {
+        // Simulate form submission for local development
+        console.log('Local development - simulating form submission');
+        setTimeout(() => {
+            showSuccessMessage();
+            trackFormSubmission();
+            // Reset button state
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        }, 1000);
+        return;
+    }
+    
+    // Submit to Netlify Forms (production only)
     fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -199,12 +220,17 @@ function handleFormSubmit(e) {
             showSuccessMessage();
             trackFormSubmission();
         } else {
-            throw new Error('Network response was not ok');
+            console.error('Form submission failed:', {
+                status: response.status,
+                statusText: response.statusText,
+                url: response.url
+            });
+            throw new Error(`Form submission failed: ${response.status} ${response.statusText}`);
         }
     })
     .catch(error => {
         console.error('Form submission error:', error);
-        showErrorMessage();
+        showErrorMessage(error);
     })
     .finally(() => {
         // Reset button state
@@ -221,11 +247,13 @@ function showSuccessMessage() {
     success.style.display = 'block';
 }
 
-function showErrorMessage() {
-    alert('Sorry, there was an error sending your request. Please try again or contact us directly.');
+function showErrorMessage(error) {
+    const errorMsg = error?.message || 'Unknown error occurred';
+    console.error('Detailed error:', errorMsg);
+    alert(`Sorry, there was an error sending your request: ${errorMsg}. Please try again or contact us directly at jakecozza.dj@gmail.com`);
 }
 
-// Animation on scroll
+// Enhanced animation on scroll
 function initAnimations() {
     const observerOptions = {
         threshold: 0.1,
@@ -235,18 +263,72 @@ function initAnimations() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in-up');
-                observer.unobserve(entry.target);
+                const element = entry.target;
+                const animationType = element.dataset.animate || 'fade-in-up';
+                element.classList.add(animationType);
+                observer.unobserve(element);
             }
         });
     }, observerOptions);
     
-    // Observe elements for animation
-    const animateElements = document.querySelectorAll(
-        '.service-card, .feature, .about__content, .why-choose__grid'
-    );
+    // Observe elements for animation with specific animation types
+    const animateElements = [
+        // Service cards with staggered animation
+        ...document.querySelectorAll('.service-card'),
+        // Features with different directions
+        ...document.querySelectorAll('.feature'),
+        // About content from left
+        ...document.querySelectorAll('.about__text'),
+        // About image from right
+        ...document.querySelectorAll('.about__image'),
+        // Highlights with scale
+        ...document.querySelectorAll('.highlight'),
+        // Section titles
+        ...document.querySelectorAll('.services__title, .why-choose__title, .contact__title')
+    ];
+    
+    // Add data attributes for different animation types
+    document.querySelectorAll('.service-card').forEach((card, index) => {
+        card.dataset.animate = 'fade-in-up';
+        card.classList.add(`animate-delay-${(index % 3) + 1}`);
+    });
+    
+    document.querySelectorAll('.feature').forEach((feature, index) => {
+        feature.dataset.animate = 'fade-in-scale';
+        feature.classList.add(`animate-delay-${index + 1}`);
+    });
+    
+    document.querySelectorAll('.highlight').forEach((highlight, index) => {
+        highlight.dataset.animate = 'fade-in-scale';
+        highlight.classList.add(`animate-delay-${index + 1}`);
+    });
+    
+    const aboutText = document.querySelector('.about__text');
+    if (aboutText) aboutText.dataset.animate = 'fade-in-left';
+    
+    const aboutImage = document.querySelector('.about__image');
+    if (aboutImage) aboutImage.dataset.animate = 'fade-in-right';
+    
+    document.querySelectorAll('.services__title, .why-choose__title, .contact__title').forEach(title => {
+        title.dataset.animate = 'slide-in-bottom';
+    });
     
     animateElements.forEach(el => observer.observe(el));
+    
+    // Add hero content animation on page load
+    setTimeout(() => {
+        const heroContent = document.querySelector('.hero__content');
+        const heroImage = document.querySelector('.hero__image');
+        
+        if (heroContent) {
+            heroContent.style.animation = 'fadeInLeft 1s var(--animation-elastic) forwards';
+        }
+        if (heroImage) {
+            heroImage.style.animation = 'fadeInRight 1s var(--animation-elastic) 0.3s forwards';
+            heroImage.style.opacity = '0';
+            setTimeout(() => heroImage.style.opacity = '1', 300);
+        }
+    }, 100);
 }
 
 // Analytics tracking
@@ -348,17 +430,26 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Header scroll effect
+// Header scroll effect with parallax
 window.addEventListener('scroll', throttle(() => {
     const header = document.querySelector('.header');
+    const heroImage = document.querySelector('.hero__image-photo');
     const scrolled = window.scrollY > 50;
+    const scrollPercent = window.scrollY / window.innerHeight;
     
+    // Header background effect
     if (scrolled) {
         header.style.background = 'rgba(255, 255, 255, 0.98)';
         header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
     } else {
         header.style.background = 'rgba(255, 255, 255, 0.95)';
         header.style.boxShadow = 'none';
+    }
+    
+    // Subtle parallax effect for hero image (only on desktop)
+    if (heroImage && window.innerWidth > 768 && scrollPercent < 1) {
+        const translateY = scrollPercent * 50;
+        heroImage.style.transform = `perspective(1000px) rotateY(-5deg) translateY(${translateY}px)`;
     }
 }, 16));
 
