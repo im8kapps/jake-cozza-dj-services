@@ -1,9 +1,4 @@
 {
-  "functions": {
-    "pages/api/contact.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
   "rewrites": [
     {
       "source": "/quote",
