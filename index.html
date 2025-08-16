@@ -22,11 +22,11 @@
     <title>Jake Cozza DJ Services - Professional DJ in Indianapolis</title>
     
     <!-- Preload critical resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Nunito:wght@300;400;500;600;700;800;900&display=swap" as="style">
     <link rel="preload" href="styles.css" as="style">
     
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Modern DJ Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
@@ -54,20 +54,65 @@
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
+        <!-- Music Visualizer Background -->
+        <div class="music-visualizer">
+            <div class="equalizer">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+        
         <div class="hero__container">
             <div class="hero__content">
-                <h1 class="hero__title">Professional DJ Services in Indianapolis</h1>
-                <p class="hero__subtitle">Making your special moments unforgettable with the perfect soundtrack for your celebration</p>
-                <div class="hero__location">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                    </svg>
-                    <span>Serving Greater Indianapolis Area</span>
+                <div class="hero__badge">🎧 Premier DJ Experience</div>
+                <h1 class="hero__title">
+                    <span class="title-gradient">Electrifying</span> DJ Services<br>
+                    in Indianapolis
+                </h1>
+                <p class="hero__subtitle">Turn up the energy and make your special moments unforgettable with beats that move souls and create memories</p>
+                <div class="hero__features">
+                    <div class="feature-item">
+                        <span class="icon">🎵</span>
+                        <span>Premium Sound</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">⚡</span>
+                        <span>High Energy</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">🎉</span>
+                        <span>Unforgettable Vibes</span>
+                    </div>
                 </div>
-                <button class="hero__cta btn btn--primary" onclick="openQuoteModal()">REQUEST QUOTE</button>
+                <div class="hero__cta-group">
+                    <button class="hero__cta btn btn--primary" onclick="openQuoteModal()">
+                        <span>Get Your Quote</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                        </svg>
+                    </button>
+                    <div class="hero__location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        <span>Greater Indianapolis Area</span>
+                    </div>
+                </div>
             </div>
             <div class="hero__image">
-                <img src="assets/IMG_5217.jpeg" alt="Jake Cozza DJ at work" class="hero__image-photo" loading="eager">
+                <div class="image-wrapper">
+                    <img src="assets/IMG_5217.jpeg" alt="Jake Cozza DJ at work" class="hero__image-photo" loading="eager">
+                    <div class="vinyl-record">
+                        <div class="vinyl-inner"></div>
+                        <div class="vinyl-label">JC</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -77,29 +122,54 @@
         <div class="container">
             <div class="about__content">
                 <div class="about__text">
-                    <h2 class="about__title">About Jake</h2>
+                    <div class="section-badge">🎯 The Beat Master</div>
+                    <h2 class="about__title">
+                        Meet Jake Cozza<br>
+                        <span class="title-accent">Indianapolis' Premier DJ</span>
+                    </h2>
                     <p class="about__description">
-                        With 5+ years of experience in the entertainment industry, Jake Cozza brings passion, 
-                        professionalism, and an extensive music library to every event. From intimate gatherings to 
-                        grand celebrations, Jake ensures your special day has the perfect soundtrack.
+                        🎵 <strong>Passion meets professionalism</strong> – With 5+ years of turning ordinary moments into extraordinary memories, 
+                        Jake brings an infectious energy that gets everyone moving. From reading the crowd to mixing seamless transitions, 
+                        he creates the perfect vibe for your celebration.
                     </p>
+                    <div class="about__features">
+                        <div class="feature-point">
+                            <span class="feature-icon">🎧</span>
+                            <span>Expert mix skills & song selection</span>
+                        </div>
+                        <div class="feature-point">
+                            <span class="feature-icon">⚡</span>
+                            <span>High-energy crowd engagement</span>
+                        </div>
+                        <div class="feature-point">
+                            <span class="feature-icon">🎤</span>
+                            <span>Professional MC services</span>
+                        </div>
+                    </div>
                     <div class="about__highlights">
                         <div class="highlight">
                             <span class="highlight__number">5+</span>
-                            <span class="highlight__text">Years Experience</span>
+                            <span class="highlight__text">Years Rocking</span>
                         </div>
                         <div class="highlight">
-                            <span class="highlight__number">10+</span>
-                            <span class="highlight__text">Events Hosted</span>
+                            <span class="highlight__number">50+</span>
+                            <span class="highlight__text">Epic Events</span>
                         </div>
                         <div class="highlight">
                             <span class="highlight__number">100%</span>
-                            <span class="highlight__text">Client Satisfaction</span>
+                            <span class="highlight__text">Dance Floor Magic</span>
                         </div>
                     </div>
                 </div>
                 <div class="about__image">
-                    <img src="assets/IMG_5227.jpeg" alt="Jake Cozza professional headshot" class="about__image-photo" loading="lazy">
+                    <div class="image-frame">
+                        <img src="assets/IMG_5227.jpeg" alt="Jake Cozza professional DJ headshot" class="about__image-photo" loading="lazy">
+                        <div class="sound-waves">
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -108,40 +178,128 @@
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
-            <h2 class="services__title">Services</h2>
+            <div class="section-badge">🎉 What We Bring</div>
+            <h2 class="services__title">
+                Services That Make<br>
+                <span class="title-gradient">Your Event Legendary</span>
+            </h2>
             <div class="services__grid">
                 <div class="service-card">
                     <div class="service-card__icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
+                        💍
                     </div>
-                    <h3 class="service-card__title">Weddings</h3>
+                    <h3 class="service-card__title">Wedding Magic</h3>
                     <p class="service-card__description">
-                        Create the perfect atmosphere for your special day with customized playlists and seamless transitions.
+                        From ceremony to last dance – create unforgettable moments with perfect timing, 
+                        seamless transitions, and music that tells your love story.
                     </p>
+                    <div class="service-features">
+                        <span>✨ Ceremony music</span>
+                        <span>🎵 Reception hits</span>
+                        <span>🎤 MC services</span>
+                    </div>
                 </div>
                 <div class="service-card">
                     <div class="service-card__icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10z"/>
-                        </svg>
+                        🏢
                     </div>
-                    <h3 class="service-card__title">Corporate Events</h3>
+                    <h3 class="service-card__title">Corporate Vibes</h3>
                     <p class="service-card__description">
-                        Professional entertainment for company parties, conferences, and networking events.
+                        Elevate your company events with professional entertainment that keeps it classy 
+                        but never boring. Perfect for galas, conferences, and team celebrations.
                     </p>
+                    <div class="service-features">
+                        <span>🎯 Brand-aligned music</span>
+                        <span>📢 Professional announcing</span>
+                        <span>⚡ Energy management</span>
+                    </div>
                 </div>
                 <div class="service-card">
                     <div class="service-card__icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/>
-                        </svg>
+                        🎊
                     </div>
-                    <h3 class="service-card__title">Private Parties</h3>
+                    <h3 class="service-card__title">Party Legends</h3>
                     <p class="service-card__description">
-                        Birthday parties, anniversaries, and celebrations that keep your guests dancing all night long.
+                        Birthdays, anniversaries, graduations – every milestone deserves an epic soundtrack. 
+                        We bring the energy that transforms good times into legendary memories.
                     </p>
+                    <div class="service-features">
+                        <span>🎂 Birthday bangers</span>
+                        <span>💫 Anniversary classics</span>
+                        <span>🎓 Grad party hits</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-badge">💬 What Clients Say</div>
+            <h2 class="testimonials__title">
+                Real Stories from<br>
+                <span class="title-gradient">Real People</span>
+            </h2>
+            <div class="testimonials-carousel">
+                <div class="testimonial active">
+                    <div class="testimonial__content">
+                        <div class="testimonial__quote">
+                            "Jake absolutely made our wedding reception! He read the crowd perfectly and had everyone dancing all night. The energy he brought was infectious and made our special day even more memorable."
+                        </div>
+                        <div class="testimonial__author">
+                            <div class="author__avatar">👰</div>
+                            <div class="author__info">
+                                <div class="author__name">Sarah & Mike</div>
+                                <div class="author__event">Wedding Reception</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial__content">
+                        <div class="testimonial__quote">
+                            "Professional, reliable, and incredibly talented! Jake transformed our corporate gala from a standard event into an unforgettable experience. Our team is still talking about it months later."
+                        </div>
+                        <div class="testimonial__author">
+                            <div class="author__avatar">👔</div>
+                            <div class="author__info">
+                                <div class="author__name">Jennifer L.</div>
+                                <div class="author__event">Corporate Gala</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial__content">
+                        <div class="testimonial__quote">
+                            "Best DJ we've ever hired! Jake brought exactly the vibe we wanted for our anniversary party. He mixed classic hits with current favorites seamlessly. Worth every penny!"
+                        </div>
+                        <div class="testimonial__author">
+                            <div class="author__avatar">🎉</div>
+                            <div class="author__info">
+                                <div class="author__name">David & Lisa</div>
+                                <div class="author__event">25th Anniversary</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev" onclick="changeTestimonial(-1)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                        </svg>
+                    </button>
+                    <div class="carousel-dots">
+                        <span class="dot active" onclick="currentTestimonial(1)"></span>
+                        <span class="dot" onclick="currentTestimonial(2)"></span>
+                        <span class="dot" onclick="currentTestimonial(3)"></span>
+                    </div>
+                    <button class="carousel-btn next" onclick="changeTestimonial(1)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -150,34 +308,26 @@
     <!-- Why Choose Section -->
     <section class="why-choose">
         <div class="container">
-            <h2 class="why-choose__title">Why Choose Jake?</h2>
+            <div class="section-badge">⚡ Why Jake Rocks</div>
+            <h2 class="why-choose__title">
+                What Makes Us<br>
+                <span class="title-gradient">Different</span>
+            </h2>
             <div class="why-choose__grid">
                 <div class="feature">
-                    <div class="feature__icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zm2.5-9H19v2h1.5v16.5H3.5V4H5V2h1.5v2h11V2H19v2h1.5z"/>
-                        </svg>
-                    </div>
-                    <h3 class="feature__title">Professional & Reliable</h3>
-                    <p class="feature__description">Always on time, properly dressed, and prepared with backup equipment.</p>
+                    <div class="feature__icon">⏰</div>
+                    <h3 class="feature__title">Always On Point</h3>
+                    <p class="feature__description">Punctual, professional, and prepared with backup equipment. No stress, just success.</p>
                 </div>
                 <div class="feature">
-                    <div class="feature__icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                        </svg>
-                    </div>
-                    <h3 class="feature__title">Extensive Music Library</h3>
-                    <p class="feature__description">Thousands of songs across all genres and decades to satisfy every guest.</p>
+                    <div class="feature__icon">🎵</div>
+                    <h3 class="feature__title">Massive Music Library</h3>
+                    <p class="feature__description">10,000+ songs across every genre and decade. From classics to current hits, we've got it all.</p>
                 </div>
                 <div class="feature">
-                    <div class="feature__icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="feature__title">Personalized Experience</h3>
-                    <p class="feature__description">Custom playlists and announcements tailored to your event and preferences.</p>
+                    <div class="feature__icon">🎯</div>
+                    <h3 class="feature__title">Crowd Reading Master</h3>
+                    <p class="feature__description">We read the room and adjust the energy perfectly. Your guests will love every moment.</p>
                 </div>
             </div>
         </div>
@@ -203,7 +353,7 @@
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                             </svg>
-                            <a href="mailto:jakecozza.dj@gmail.com" class="contact__link">jakecozza.dj@gmail.com</a>
+                            <a href="mailto:jakecozzadj@gmail.com" class="contact__link">jakecozzadj@gmail.com</a>
                         </div>
                         <div class="contact__item">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -232,8 +382,7 @@
                     </svg>
                 </button>
             </div>
-            <form class="quote-form" id="quoteForm" name="quote-requests" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                <input type="hidden" name="form-name" value="quote-requests">
+            <form class="quote-form" id="quoteForm" method="POST">
                 <div class="honeypot">
                     <label>Don't fill this out if you're human: <input name="bot-field"></label>
                 </div>

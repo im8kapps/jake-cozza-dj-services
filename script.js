@@ -6,7 +6,74 @@ document.addEventListener('DOMContentLoaded', function() {
     initModalHandling();
     initAnimations();
     initAnalytics();
+    initTestimonialCarousel();
 });
+
+// Testimonial Carousel
+let currentTestimonialIndex = 0;
+const testimonials = document.querySelectorAll('.testimonial');
+const dots = document.querySelectorAll('.dot');
+
+function initTestimonialCarousel() {
+    // Auto-advance testimonials every 8 seconds
+    setInterval(() => {
+        changeTestimonial(1);
+    }, 8000);
+}
+
+function showTestimonial(index) {
+    // Hide all testimonials
+    testimonials.forEach(testimonial => {
+        testimonial.classList.remove('active');
+    });
+    
+    // Remove active class from all dots
+    dots.forEach(dot => {
+        dot.classList.remove('active');
+    });
+    
+    // Show current testimonial and activate corresponding dot
+    if (testimonials[index]) {
+        testimonials[index].classList.add('active');
+    }
+    if (dots[index]) {
+        dots[index].classList.add('active');
+    }
+}
+
+function changeTestimonial(direction) {
+    currentTestimonialIndex += direction;
+    
+    // Wrap around if necessary
+    if (currentTestimonialIndex >= testimonials.length) {
+        currentTestimonialIndex = 0;
+    } else if (currentTestimonialIndex < 0) {
+        currentTestimonialIndex = testimonials.length - 1;
+    }
+    
+    showTestimonial(currentTestimonialIndex);
+    
+    // Track analytics
+    if (typeof gtag === 'function') {
+        gtag('event', 'testimonial_interaction', {
+            event_category: 'engagement',
+            event_label: `testimonial_${currentTestimonialIndex + 1}`
+        });
+    }
+}
+
+function currentTestimonial(index) {
+    currentTestimonialIndex = index - 1; // Convert to 0-based index
+    showTestimonial(currentTestimonialIndex);
+    
+    // Track analytics
+    if (typeof gtag === 'function') {
+        gtag('event', 'testimonial_click', {
+            event_category: 'engagement',
+            event_label: `dot_${index}`
+        });
+    }
+}
 
 // Smooth scrolling for navigation links
 function initSmoothScrolling() {
@@ -185,11 +252,16 @@ function handleFormSubmit(e) {
     submitButton.textContent = 'Sending...';
     submitButton.disabled = true;
     
-    // Prepare form data for Netlify Forms
+    // Prepare form data for Vercel API
     const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    
+    // Remove Netlify-specific fields
+    delete data['form-name'];
+    delete data['bot-field'];
     
     // Debug: Log form data
-    console.log('Form data being submitted:', Object.fromEntries(formData));
+    console.log('Form data being submitted:', data);
     
     // Check if running locally (for development)
     const isLocalhost = window.location.hostname === 'localhost' || 
@@ -209,11 +281,14 @@ function handleFormSubmit(e) {
         return;
     }
     
-    // Submit to Netlify Forms (production only)
-    fetch('/', {
+    // Submit to Vercel API (production)
+    fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
     })
     .then(response => {
         if (response.ok) {
@@ -250,7 +325,7 @@ function showSuccessMessage() {
 function showErrorMessage(error) {
     const errorMsg = error?.message || 'Unknown error occurred';
     console.error('Detailed error:', errorMsg);
-    alert(`Sorry, there was an error sending your request: ${errorMsg}. Please try again or contact us directly at jakecozza.dj@gmail.com`);
+    alert(`Sorry, there was an error sending your request: ${errorMsg}. Please try again or contact us directly at jakecozzadj@gmail.com`);
 }
 
 // Enhanced animation on scroll
