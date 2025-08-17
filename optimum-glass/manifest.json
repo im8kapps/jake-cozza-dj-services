@@ -1,0 +1,23 @@
+{
+  "name": "Optimum Glass - Professional Glass Services",
+  "short_name": "Optimum Glass",
+  "description": "Professional glass repair and replacement services in Indianapolis for auto, residential, and commercial needs",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2563eb",
+  "theme_color": "#1e40af",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪟</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪟</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["business", "services", "glass", "repair"],
+  "lang": "en-US"
+}

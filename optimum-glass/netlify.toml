@@ -1,0 +1,67 @@
+[build]
+  publish = "."
+  command = "echo 'No build required - static site'"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[redirects]]
+  from = "/quote"
+  to = "/#contact"
+  status = 302
+
+[[redirects]]
+  from = "/estimate"
+  to = "/#contact"
+  status = 302
+
+[[redirects]]
+  from = "/auto-glass"
+  to = "/?service=auto#services"
+  status = 302
+
+[[redirects]]
+  from = "/residential"
+  to = "/?service=residential#services"
+  status = 302
+
+[[redirects]]
+  from = "/commercial"
+  to = "/?service=commercial#services"
+  status = 302
+
+[[redirects]]
+  from = "/emergency"
+  to = "/?service=emergency#contact"
+  status = 302
+
+# Form handling for Netlify Forms - make sure form has name="glass-quote-request"
+# and includes hidden input: <input type="hidden" name="form-name" value="glass-quote-request" />
+
+[functions]
+  # Optional: Add serverless functions directory if needed later
+  directory = "functions/"
