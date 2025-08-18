@@ -19,7 +19,7 @@
     <meta property="twitter:title" content="Optimum Glass - Professional Glass Services in Indianapolis">
     <meta property="twitter:description" content="Quality glass repair and replacement services for auto, residential, and commercial needs. 10+ years of experience serving Indianapolis with satisfaction guaranteed.">
     
-    <title>Optimum Glass - Professional Glass Services in Indianapolis</title>
+    <title>Optimum Glass - Professional Glass Services in Indianapolis | Auto-Deploy Test</title>
     
     <!-- Preload critical resources -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;600;700;800;900&display=swap" as="style">
@@ -42,11 +42,13 @@
     <header class="header">
         <nav class="nav">
             <div class="nav__brand">
-                <h1 class="nav__logo">Optimum Glass</h1>
+                <img src="assets/optimum-glass-logo.png" alt="Optimum Glass Tech - Optimize Your View" class="nav__logo-img">
+                <h1 class="nav__logo">Optimum Glass Tech</h1>
             </div>
             <div class="nav__menu">
                 <a href="#about" class="nav__link">About</a>
                 <a href="#services" class="nav__link">Services</a>
+                <a href="#work" class="nav__link">Our Work</a>
                 <a href="#contact" class="nav__link">Contact</a>
             </div>
         </nav>
@@ -72,8 +74,8 @@
             <div class="hero__content">
                 <div class="hero__badge">🪟 Professional Glass Services</div>
                 <h1 class="hero__title">
-                    <span class="title-gradient">Quality</span> Glass Solutions<br>
-                    in Indianapolis
+                    <span class="title-gradient">Optimize Your View</span><br>
+                    Professional Glass Solutions
                 </h1>
                 <p class="hero__subtitle">Expert glass repair and replacement services for your auto, home, and business needs. 10+ years of experience with satisfaction guaranteed.</p>
                 <div class="hero__features">
@@ -124,12 +126,12 @@
                 <div class="about__text">
                     <div class="section-badge">🔧 Our Expertise</div>
                     <h2 class="about__title">
-                        About Optimum Glass<br>
+                        About Optimum Glass Tech<br>
                         <span class="title-accent">Your Trusted Glass Professionals</span>
                     </h2>
                     <p class="about__description">
-                        🪟 <strong>Quality work at the best price</strong> – With over 10 years of experience in glass repair and replacement, 
-                        Optimum Glass is a family business dedicated to providing exceptional service for all your glass needs. 
+                        🪟 <strong>Optimize your view with quality work at the best price</strong> – With over 10 years of experience in glass repair and replacement, 
+                        Optimum Glass Tech is a family business dedicated to providing exceptional service for all your glass needs. 
                         We aren't satisfied until our customers are satisfied.
                     </p>
                     <div class="about__features">
@@ -229,6 +231,78 @@
                         <span>🔧 Emergency repair</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Work Section -->
+    <section class="our-work" id="work">
+        <div class="container">
+            <div class="section-badge">🔨 Our Work</div>
+            <h2 class="our-work__title">
+                See the<br>
+                <span class="title-gradient">Transformation</span>
+            </h2>
+            <p class="our-work__subtitle">From damaged glass to crystal clear perfection - see the quality that sets us apart</p>
+            
+            <div class="work-gallery">
+                <div class="work-item">
+                    <div class="work-before-after">
+                        <div class="work-image work-before">
+                            <img src="assets/severe-damage-before.jpg" alt="Severely damaged windshield before repair" loading="lazy">
+                            <div class="work-label work-label--before">Before</div>
+                        </div>
+                        <div class="work-arrow">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                            </svg>
+                        </div>
+                        <div class="work-image work-after">
+                            <img src="assets/windshield-after-1.jpg" alt="Perfect windshield installation after repair" loading="lazy">
+                            <div class="work-label work-label--after">After</div>
+                        </div>
+                    </div>
+                    <h3 class="work-title">Complete Windshield Replacement</h3>
+                    <p class="work-description">From severe impact damage to crystal clear perfection - professional installation with precision and care.</p>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-before-after">
+                        <div class="work-image work-before">
+                            <img src="assets/windshield-damage-before.jpg" alt="Spider web cracked windshield before repair" loading="lazy">
+                            <div class="work-label work-label--before">Before</div>
+                        </div>
+                        <div class="work-arrow">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                            </svg>
+                        </div>
+                        <div class="work-image work-after">
+                            <img src="assets/windshield-after-2.jpg" alt="Professional windshield replacement completed" loading="lazy">
+                            <div class="work-label work-label--after">After</div>
+                        </div>
+                    </div>
+                    <h3 class="work-title">Expert Auto Glass Repair</h3>
+                    <p class="work-description">Complex spider web damage expertly replaced with factory-quality glass and professional installation.</p>
+                </div>
+
+                <div class="work-item work-item--single">
+                    <div class="work-showcase">
+                        <img src="assets/windshield-after-3.jpg" alt="Beautiful finished windshield installation showing quality workmanship" loading="lazy">
+                        <div class="work-label work-label--quality">Quality Results</div>
+                    </div>
+                    <h3 class="work-title">Professional Excellence</h3>
+                    <p class="work-description">Every installation reflects our commitment to quality - crystal clear glass with perfect fit and finish.</p>
+                </div>
+            </div>
+
+            <div class="work-cta">
+                <button class="btn btn--primary" onclick="openQuoteModal()">
+                    <span>Get Your Free Estimate</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
@@ -448,8 +522,8 @@
     <footer class="footer">
         <div class="container">
             <div class="footer__content">
-                <p class="footer__text">&copy; 2024 Optimum Glass. All rights reserved.</p>
-                <p class="footer__text">Serving Indianapolis & Surrounding Areas</p>
+                <p class="footer__text">&copy; 2024 Optimum Glass Tech. All rights reserved.</p>
+                <p class="footer__text">Serving Indianapolis & Surrounding Areas | Optimize Your View</p>
             </div>
         </div>
     </footer>
