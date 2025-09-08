@@ -80,7 +80,7 @@ SUPABASE_URL=https://your-project.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 RESEND_API_KEY=re_your-api-key
 FROM_EMAIL=noreply@jakecozzadj.com
-ADMIN_EMAIL=jakecozzadj@gmail.com
+ADMIN_EMAIL=jakecozza.dj@gmail.com
 ADMIN_PASSWORD=your-secure-password
 ```
 
@@ -210,7 +210,7 @@ Consider adding:
 ## 📞 Support
 
 For technical support or questions:
-- **Email**: jakecozzadj@gmail.com
+- **Email**: jakecozza.dj@gmail.com
 - **Phone**: (312) 438-8771
 - **Service Area**: Greater Indianapolis Area
 

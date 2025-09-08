@@ -77,7 +77,7 @@ This is a static website with no build process required:
 
 ### Contact Information (Current)
 - Phone: (312) 438-8771
-- Email: jakecozzadj@gmail.com
+- Email: jakecozza.dj@gmail.com
 - Service area: Greater Indianapolis Area
 
 ### Key Sections in `index.html`

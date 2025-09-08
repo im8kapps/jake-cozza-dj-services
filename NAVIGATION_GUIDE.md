@@ -167,7 +167,7 @@ grep -A 5 "service-card__title" index.html
 ### Project Contacts
 - **Client**: Jake Cozza DJ Services
 - **Phone**: (312) 438-8771
-- **Email**: jakecozzadj@gmail.com
+- **Email**: jakecozza.dj@gmail.com
 - **Service Area**: Greater Indianapolis Area
 
 ### Technical Information

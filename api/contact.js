@@ -163,7 +163,7 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error('Contact form error:', error);
     res.status(500).json({ 
-      message: 'Internal server error. Please try again or contact us directly at jakecozzadj@gmail.com or (312) 438-8771.',
+      message: 'Internal server error. Please try again or contact us directly at jakecozza.dj@gmail.com or (312) 438-8771.',
       error: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }

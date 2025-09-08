@@ -325,7 +325,7 @@ function showSuccessMessage() {
 function showErrorMessage(error) {
     const errorMsg = error?.message || 'Unknown error occurred';
     console.error('Detailed error:', errorMsg);
-    alert(`Sorry, there was an error sending your request: ${errorMsg}. Please try again or contact us directly at jakecozzadj@gmail.com`);
+    alert(`Sorry, there was an error sending your request: ${errorMsg}. Please try again or contact us directly at jakecozza.dj@gmail.com`);
 }
 
 // Enhanced animation on scroll

@@ -437,7 +437,7 @@ git push origin main
 
 ### Current Contact Details
 - **📞 Phone**: (312) 438-8771
-- **📧 Email**: jakecozzadj@gmail.com
+- **📧 Email**: jakecozza.dj@gmail.com
 - **📍 Location**: Greater Indianapolis Area
 
 ### Technical Contacts
