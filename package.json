@@ -4,14 +4,13 @@
   "description": "Professional DJ services website for Jake Cozza in Indianapolis",
   "main": "index.html",
   "scripts": {
-    "dev": "vercel dev --listen 3000",
+    "dev": "netlify dev --port 8888",
     "build": "echo 'Static site - no build required'",
     "start": "python3 -m http.server 8000",
-    "deploy": "vercel --prod"
+    "deploy": "netlify deploy --prod"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.39.0",
-    "resend": "^2.1.0"
+    "@netlify/blobs": "^0.6.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.0"

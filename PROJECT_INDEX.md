@@ -48,8 +48,8 @@
 ### Backend & Services
 | Service | Purpose | Configuration |
 |---------|---------|---------------|
-| **Vercel Functions** | Form handling | `/api/contact.js` - serverless contact form |
-| **Netlify Forms** | Alternative form backend | Automatic form detection and handling |
+| **Netlify Functions** | Admin API | `/.netlify/functions/admin` (exposed at `/api/admin`) |
+| **Netlify Forms** | Quote storage | Automatic form capture, spam filtering, email alerts |
 | **Google Analytics** | Traffic & conversion tracking | GA4 setup with custom events |
 
 ### Development Tools
@@ -74,12 +74,11 @@ jake-cozza-dj-services/
 ├── ⚙️ Configuration
 │   ├── manifest.json           # PWA web app manifest
 │   ├── sw.js                   # Service worker for caching
-│   ├── vercel.json             # Vercel deployment config
-│   └── netlify.toml           # Netlify deployment config
+│   └── netlify.toml            # Netlify deployment config (headers, redirects)
 │
-├── 🌐 API
-│   └── api/
-│       └── contact.js          # Serverless contact form handler
+├── 🌐 Functions
+│   └── netlify/functions/
+│       └── admin.js            # Admin dashboard data endpoint & status updates
 │
 ├── 🖼️ Assets
 │   └── assets/
@@ -225,20 +224,25 @@ jake-cozza-dj-services/
 
 ## ⚙️ Configuration & Deployment
 
-### Vercel Configuration (`vercel.json`)
-```json
-{
-  "functions": {
-    "pages/api/contact.js": { "runtime": "nodejs18.x" }
-  },
-  "rewrites": [
-    { "source": "/quote", "destination": "/#contact" }
-  ],
-  "headers": [
-    /* Security headers for all routes */
-    /* Cache headers for static assets */
-  ]
-}
+### Netlify Configuration (`netlify.toml`)
+```toml
+[build]
+  publish = "."
+  command = "echo 'No build required - static site'"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/quote"
+  to = "/#contact"
+  status = 302
 ```
 
 ### PWA Configuration (`manifest.json`)
@@ -268,8 +272,8 @@ jake-cozza-dj-services/
 #### 🎯 Contact Form Implementation
 - **HTML Structure**: `index.html` lines 374-448
 - **Styling**: `styles.css` lines 1166-1354
-- **JavaScript Logic**: `script.js` lines 135-329
-- **API Handler**: `api/contact.js` (complete file)
+- **JavaScript Logic**: `script.js` lines 135-329 (AJAX submission to Netlify Forms)
+- **Netlify Forms Dashboard**: Manage notifications and spam protection
 
 #### 🎨 Hero Section Components
 - **HTML**: `index.html` lines 56-118
@@ -415,9 +419,8 @@ git push origin main
 ### Deployment Platforms
 | Platform | Status | Purpose |
 |----------|--------|---------|
-| **Netlify** | ✅ Active | Primary hosting, form handling |
-| **Vercel** | 🔧 Configured | Alternative deployment option |
-| **GitHub Pages** | 🔧 Ready | Secondary hosting option |
+| **Netlify** | ✅ Active | Primary hosting, serverless functions |
+| **GitHub Pages** | 🔧 Ready | Secondary static hosting option |
 
 ### Deployment Features
 - **✅ Automatic Deployment**: GitHub integration
@@ -447,7 +450,7 @@ git push origin main
 
 ### Support Resources
 - **Netlify Documentation**: https://docs.netlify.com/
-- **Vercel Documentation**: https://vercel.com/docs
+- **Netlify Forms API**: https://docs.netlify.com/forms/setup/
 - **Git Documentation**: https://git-scm.com/docs
 - **Web Accessibility**: https://www.w3.org/WAI/WCAG21/quickref/
 

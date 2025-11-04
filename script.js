@@ -252,7 +252,7 @@ function handleFormSubmit(e) {
     submitButton.textContent = 'Sending...';
     submitButton.disabled = true;
     
-    // Prepare form data for Vercel API
+    // Prepare form data for Netlify Forms submission
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
     
@@ -264,12 +264,10 @@ function handleFormSubmit(e) {
     console.log('Form data being submitted:', data);
     
     // Check if running locally (for development)
-    const isLocalhost = window.location.hostname === 'localhost' || 
-                       window.location.hostname === '127.0.0.1' || 
-                       window.location.protocol === 'file:';
+    const isFileProtocol = window.location.protocol === 'file:';
     
-    if (isLocalhost) {
-        // Simulate form submission for local development
+    if (isFileProtocol) {
+        // Simulate form submission when opened directly from the filesystem
         console.log('Local development - simulating form submission');
         setTimeout(() => {
             showSuccessMessage();
@@ -281,14 +279,19 @@ function handleFormSubmit(e) {
         return;
     }
     
-    // Submit to Vercel API (production)
-    fetch('/api/contact', {
+    // Submit to Netlify Forms endpoint
+    const encoded = new URLSearchParams({
+        'form-name': 'quote',
+        ...data
+    });
+    
+    fetch('/', {
         method: 'POST',
         headers: { 
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
             'Accept': 'application/json'
         },
-        body: JSON.stringify(data)
+        body: encoded.toString()
     })
     .then(response => {
         if (response.ok) {

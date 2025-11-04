@@ -7,7 +7,7 @@ A modern, vibrant website for professional DJ services in the Indianapolis area.
 - **Modern Design**: Glassmorphism effects with vibrant DJ-themed colors
 - **Responsive Layout**: Mobile-first design that works on all devices
 - **Interactive Elements**: Animated music visualizer, spinning vinyl records, and smooth transitions
-- **Contact Form**: Integrated with database storage and email notifications
+- **Contact Form**: Captures leads via Netlify Forms with instant email notices
 - **Admin Dashboard**: Simple dashboard to manage quote requests
 - **PWA Ready**: Service worker for offline functionality
 
@@ -21,10 +21,10 @@ A modern, vibrant website for professional DJ services in the Indianapolis area.
 ## 🚀 Tech Stack
 
 - **Frontend**: Vanilla HTML, CSS, JavaScript
-- **Backend**: Vercel Serverless Functions
-- **Database**: Supabase PostgreSQL
-- **Email**: Resend email service
-- **Hosting**: Vercel with automatic deployments
+- **Backend**: Netlify Functions (Node 18)
+- **Storage**: Netlify Forms submissions + Netlify Blobs for statuses
+- **Notifications**: Netlify Form email alerts
+- **Hosting**: Netlify Sites + CDN
 
 ## 📁 Project Structure
 
@@ -36,16 +36,13 @@ jake-cozza-dj-services/
 ├── script.js               # Interactive features
 ├── sw.js                   # Service worker
 ├── manifest.json           # PWA manifest
-├── api/
-│   ├── contact.js          # Contact form handler
-│   └── admin.js            # Admin API endpoints
-├── lib/
-│   └── email.js            # Email service module
-├── database/
-│   └── schema.sql          # Database schema
-├── package.json            # Dependencies
-├── vercel.json             # Vercel configuration
-└── .env.example            # Environment variables template
+├── assets/                 # Marketing imagery
+├── netlify/
+│   └── functions/
+│       └── admin.js        # Admin dashboard API + status updates
+├── netlify.toml            # Netlify configuration (redirects, headers)
+├── package.json            # Scripts and dependencies
+└── docs (*.md)             # Project guides and workflow references
 ```
 
 ## 🛠️ Setup Instructions
@@ -58,37 +55,33 @@ cd jake-cozza-dj-services
 npm install
 ```
 
-### 2. Database Setup (Supabase)
+### 2. Netlify Forms & Notifications
 
-1. Create a new project at [supabase.com](https://supabase.com)
-2. Run the SQL commands from `database/schema.sql` in the Supabase SQL editor
-3. Get your project URL and service role key from Settings > API
+1. Deploy the site once so Netlify detects the `quote` form.
+2. In the Netlify dashboard, enable email notifications for the form so the admin receives new requests.
+3. Copy the form ID from **Site dashboard → Forms → quote → Settings & usage** for use in the admin API.
 
-### 3. Email Setup (Resend)
+### 3. Environment Variables
 
-1. Create an account at [resend.com](https://resend.com)
-2. Get your API key from the dashboard
-3. Verify your domain (optional, but recommended for production)
-
-### 4. Environment Variables
-
-1. Copy `.env.example` to `.env.local`
-2. Fill in your actual values:
+1. Create a `.env.local` file in the project root.
+2. Add the following variables:
 
 ```env
-SUPABASE_URL=https://your-project.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
-RESEND_API_KEY=re_your-api-key
-FROM_EMAIL=noreply@jakecozzadj.com
-ADMIN_EMAIL=jakecozza.dj@gmail.com
 ADMIN_PASSWORD=your-secure-password
+NETLIFY_FORM_ID=your-netlify-form-id
+NETLIFY_ACCESS_TOKEN=your-netlify-personal-access-token
+# Required only for local development with Netlify Blobs
+NETLIFY_BLOBS_TOKEN=your-netlify-blobs-token
 ```
 
-### 5. Deploy to Vercel
+> The Netlify access token needs at least the `forms:read` and `sites:write` scopes so the admin API can fetch submissions and write status updates.
 
-1. Connect your GitHub repository to Vercel
-2. Add environment variables in Vercel dashboard
-3. Deploy automatically on push to main branch
+### 4. Deploy to Netlify
+
+1. Install the Netlify CLI (`npm install -g netlify-cli`) or use the Netlify UI.
+2. Run `netlify init` to link the site (or connect the repository via app.netlify.com).
+3. Configure the same environment variables in the Netlify dashboard.
+4. Deploy with `npm run deploy` or by pushing to the connected branch.
 
 ## 🔧 Development
 
@@ -96,68 +89,48 @@ ADMIN_PASSWORD=your-secure-password
 
 ```bash
 npm run dev
-# or
-vercel dev
 ```
 
-This starts the Vercel development server with serverless functions.
+> Requires the Netlify CLI. Install it globally with `npm install -g netlify-cli` if you haven't already.
+
+The dev server proxies Netlify Functions at `/api/*`, so the contact form and dashboard behave the same as production.
 
 ### Testing Contact Form
 
-1. Fill out the contact form on the homepage
-2. Check Vercel function logs for processing details
-3. Verify email notifications are sent
-4. Check Supabase dashboard for database entries
+1. Fill out the quote form on the homepage.
+2. Check Netlify function logs (`netlify functions:log`) for admin API activity.
+3. Confirm the email notification arrives in the admin inbox.
+4. Verify the submission appears under **Forms → quote** in the Netlify dashboard.
 
 ### Admin Dashboard
 
 Access the admin dashboard at `/admin.html` with your admin password (if configured).
 
-## 📊 Database Schema
+## 📊 Quote Storage & Statuses
 
-The `quote_requests` table stores all contact form submissions:
+- **Quote submissions** are stored automatically by Netlify Forms and can be reviewed in the Netlify dashboard.
+- **Status updates** (pending or accepted) are tracked via Netlify Blobs and managed through the admin dashboard.
+- **Admin access** requires the password you define in `ADMIN_PASSWORD` and uses your Netlify personal access token behind the scenes.
 
-- **id**: Auto-incrementing primary key
-- **name**: Customer name
-- **email**: Customer email
-- **phone**: Customer phone number
-- **event_date**: Date of the event
-- **event_type**: Type of event (Wedding, Corporate, etc.)
-- **message**: Additional details (optional)
-- **status**: Request status (pending, contacted, quoted, booked, etc.)
-- **created_at**: Timestamp of submission
-- **updated_at**: Timestamp of last update
+## 📧 Email Notifications
 
-## 📧 Email Integration
-
-### Features
-
-- **Admin Notifications**: Jake receives detailed quote requests
-- **Customer Confirmations**: Optional thank you emails to customers
-- **Professional Templates**: HTML and plain text versions
-- **Contact Links**: Direct email and phone links for easy response
-
-### Email Templates
-
-The email service includes professional templates with:
-- Branded headers with gradient styling
-- Organized contact information
-- Action buttons for quick response
-- Mobile-responsive design
+- Configure email notifications inside Netlify so the admin is alerted as soon as a submission arrives.
+- Add additional recipients in **Forms → quote → Notifications** if multiple team members should be notified.
+- No third-party email provider or API keys are required.
 
 ## 🔐 Security
 
-- **Environment Variables**: Sensitive data stored in environment variables
-- **Row Level Security**: Database access controlled by Supabase RLS
-- **Input Validation**: Server-side validation for all form inputs
-- **CORS Configuration**: Proper CORS headers for API security
+- **Environment Variables**: Protect admin credentials and Netlify tokens outside of version control
+- **Admin Password**: Bearer token guard on the dashboard API
+- **Input Validation**: Client-side validation before submissions reach Netlify
+- **Netlify Forms**: Honeypot field and spam filtering built into the platform
 
 ## 🚀 Performance
 
 - **Optimized Assets**: Compressed images and efficient CSS
 - **Service Worker**: Caching for offline functionality
 - **Lazy Loading**: Efficient resource loading
-- **CDN Delivery**: Vercel's global CDN for fast loading
+- **CDN Delivery**: Netlify's global CDN for fast loading
 
 ## 📱 Mobile Experience
 
@@ -170,10 +143,7 @@ The email service includes professional templates with:
 
 ### Updating Contact Information
 
-Edit the contact details in:
-- `index.html` (lines ~325-330)
-- `lib/email.js` (phone numbers in templates)
-- Environment variables for email addresses
+Edit the contact details in `index.html` (lines ~325-330) and update the Netlify form notification recipients if the destination email changes.
 
 ### Adding New Services
 
@@ -187,8 +157,8 @@ Update CSS custom properties in `styles.css` (lines ~1-15) to change the color s
 
 ### Error Tracking
 
-- Check Vercel function logs for API errors
-- Monitor Supabase logs for database issues
+- Check Netlify function logs for API errors
+- Review Netlify Forms dashboard for submission issues or spam flags
 - Review browser console for frontend errors
 
 ### Analytics

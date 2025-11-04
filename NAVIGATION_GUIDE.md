@@ -185,9 +185,9 @@ grep -A 5 "service-card__title" index.html
 3. Check Netlify admin panel for deployment errors
 
 ### Form Not Working?
-1. Check [`api/contact.js`](api/contact.js) for API handler
-2. Verify form validation in [`script.js`](script.js) lines 135-329
-3. Check Netlify Forms configuration
+1. Verify form validation in [`script.js`](script.js) lines 135-329
+2. Confirm the form attributes in [`index.html`](index.html) lines 374-448 include `data-netlify="true"`
+3. Check Netlify Forms configuration and notifications
 
 ### Styling Issues?
 1. Check [`styles.css`](styles.css) for CSS conflicts
