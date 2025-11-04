@@ -1,5 +1,3 @@
-import { getStore } from '@netlify/blobs';
-
 const baseHeaders = {
   'Access-Control-Allow-Credentials': 'true',
   'Access-Control-Allow-Origin': '*',
@@ -21,9 +19,6 @@ const accessToken = process.env.NETLIFY_ACCESS_TOKEN;
 const formId = process.env.NETLIFY_FORM_ID;
 const adminPassword = process.env.ADMIN_PASSWORD;
 
-const statusStore = getStore({ name: 'quote-statuses' });
-const allowedStatuses = ['pending', 'accepted'];
-
 const ensureConfig = () => {
   const missing = [];
   if (!accessToken) missing.push('NETLIFY_ACCESS_TOKEN');
@@ -33,7 +28,7 @@ const ensureConfig = () => {
     return jsonResponse(500, {
       success: false,
       message: `Missing required configuration: ${missing.join(', ')}`,
-      hint: 'Set the variables in your Netlify environment or .env.local file.'
+      hint: 'Add the variables to your Netlify environment or .env.local file.'
     });
   }
   return null;
@@ -67,38 +62,19 @@ const fetchSubmissions = async () => {
   return response.json();
 };
 
-const getStatusForSubmission = async (submissionId) => {
-  try {
-    const stored = await statusStore.get(submissionId);
-    if (!stored) {
+const normalizeStatus = (submission) => {
+  switch (submission.state) {
+    case 'read':
+    case 'responded':
+      return 'accepted';
+    case 'new':
+    default:
       return 'pending';
-    }
-    const parsed = JSON.parse(stored);
-    if (allowedStatuses.includes(parsed?.status)) {
-      return parsed.status;
-    }
-    return 'pending';
-  } catch (error) {
-    console.warn(`Failed to load status for submission ${submissionId}:`, error);
-    return 'pending';
   }
 };
 
-const setStatusForSubmission = async (submissionId, status) => {
-  if (!allowedStatuses.includes(status)) {
-    throw new Error(`Invalid status "${status}".`);
-  }
-
-  await statusStore.set(submissionId, JSON.stringify({
-    status,
-    updatedAt: new Date().toISOString()
-  }));
-};
-
-const mapSubmission = async (submission) => {
-  const status = await getStatusForSubmission(submission.id);
+const mapSubmission = (submission) => {
   const data = submission.data || {};
-
   return {
     id: submission.id,
     name: data.name || 'Unknown',
@@ -107,13 +83,13 @@ const mapSubmission = async (submission) => {
     eventType: data.eventType || data.event_type || '',
     eventDate: data.eventDate || data.event_date || '',
     message: data.message || '',
-    status,
+    status: normalizeStatus(submission),
     created_at: submission.created_at,
     updated_at: submission.updated_at
   };
 };
 
-const distributeByStatus = (submissions) => submissions.reduce((acc, submission) => {
+const summarizeStats = (submissions) => submissions.reduce((acc, submission) => {
   acc.total += 1;
   if (submission.status === 'pending') {
     acc.pending += 1;
@@ -126,6 +102,30 @@ const distributeByStatus = (submissions) => submissions.reduce((acc, submission)
   }
   return acc;
 }, { total: 0, pending: 0, accepted: 0, last7: 0 });
+
+const updateSubmissionState = async (id, status) => {
+  const targetState = status === 'accepted' ? 'read' : 'new';
+
+  const response = await fetch(`${submissionsApiBase}/submissions/${id}`, {
+    method: 'PUT',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      submission: {
+        state: targetState
+      }
+    })
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`Failed to update submission (${response.status}): ${text}`);
+  }
+
+  return response.json();
+};
 
 export const handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') {
@@ -151,22 +151,17 @@ export const handler = async (event) => {
 
   if (event.httpMethod === 'GET') {
     try {
-      const submissions = await fetchSubmissions();
-      const mapped = await Promise.all(submissions.map(mapSubmission));
+      const rawSubmissions = await fetchSubmissions();
+      const submissions = rawSubmissions.map(mapSubmission);
 
       const { status = 'pending' } = event.queryStringParameters || {};
-      const normalizedStatus = status.toLowerCase();
+      const normalizedFilter = status.toLowerCase();
 
-      const filtered = normalizedStatus === 'all'
-        ? mapped
-        : mapped.filter((submission) => {
-            if (normalizedStatus === 'accepted') {
-              return submission.status === 'accepted';
-            }
-            return submission.status === normalizedStatus;
-          });
+      const filtered = normalizedFilter === 'all'
+        ? submissions
+        : submissions.filter((submission) => submission.status === normalizedFilter);
 
-      const stats = distributeByStatus(mapped);
+      const stats = summarizeStats(submissions);
 
       return jsonResponse(200, {
         success: true,
@@ -200,14 +195,14 @@ export const handler = async (event) => {
         });
       }
 
-      if (!allowedStatuses.includes(status)) {
+      if (!['pending', 'accepted'].includes(status)) {
         return jsonResponse(400, {
           success: false,
-          message: `Status must be one of: ${allowedStatuses.join(', ')}`
+          message: 'Status must be either "pending" or "accepted".'
         });
       }
 
-      await setStatusForSubmission(id, status);
+      await updateSubmissionState(id, status);
 
       return jsonResponse(200, {
         success: true,

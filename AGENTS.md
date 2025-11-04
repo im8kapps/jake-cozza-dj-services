@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 - `index.html`, `styles.css`, and `script.js` deliver the static site; update copy or UI here first.
-- `netlify/functions/admin.js` drives the admin dashboard by reading Netlify form submissions and storing status updates in Netlify Blobs.
+- `netlify/functions/admin.js` drives the admin dashboard by reading Netlify form submissions and updating their state (pending vs. accepted).
 - `assets/` contains marketing imagery; adjust or optimize files here when updating visuals.
 - Configuration roots (`netlify.toml`, `manifest.json`, `sw.js`) live alongside the site—keep changes deliberate because deployments read them directly.
 
@@ -31,6 +31,6 @@
 - Link Netlify preview URLs and any related issue numbers to streamline review.
 
 ## Security & Configuration Tips
-- Required env vars: `ADMIN_PASSWORD`, `NETLIFY_FORM_ID`, `NETLIFY_ACCESS_TOKEN`, plus optional `NETLIFY_BLOBS_TOKEN` for local dev.
+- Required env vars: `ADMIN_PASSWORD`, `NETLIFY_FORM_ID`, `NETLIFY_ACCESS_TOKEN`.
 - Never hard-code credentials; use `.env.local` for local dev and keep it git-ignored.
 - When touching `admin.js`, retain the bearer check, rate-limit expensive Netlify API calls, and validate status transitions.

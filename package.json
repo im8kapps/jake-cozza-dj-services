@@ -9,9 +9,7 @@
     "start": "python3 -m http.server 8000",
     "deploy": "netlify deploy --prod"
   },
-  "dependencies": {
-    "@netlify/blobs": "^0.4.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/node": "^20.10.0"
   },

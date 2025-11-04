@@ -22,7 +22,7 @@ A modern, vibrant website for professional DJ services in the Indianapolis area.
 
 - **Frontend**: Vanilla HTML, CSS, JavaScript
 - **Backend**: Netlify Functions (Node 18)
-- **Storage**: Netlify Forms submissions + Netlify Blobs for statuses
+- **Storage**: Netlify Forms submissions (status tracked via submission state)
 - **Notifications**: Netlify Form email alerts
 - **Hosting**: Netlify Sites + CDN
 
@@ -70,11 +70,9 @@ npm install
 ADMIN_PASSWORD=your-secure-password
 NETLIFY_FORM_ID=your-netlify-form-id
 NETLIFY_ACCESS_TOKEN=your-netlify-personal-access-token
-# Required only for local development with Netlify Blobs
-NETLIFY_BLOBS_TOKEN=your-netlify-blobs-token
 ```
 
-> The Netlify access token needs at least the `forms:read` and `sites:write` scopes so the admin API can fetch submissions and write status updates.
+> The Netlify access token needs the `forms:read` scope to fetch submissions and `forms:write` to update their state.
 
 ### 4. Deploy to Netlify
 
@@ -109,7 +107,7 @@ Access the admin dashboard at `/admin.html` with your admin password (if configu
 ## 📊 Quote Storage & Statuses
 
 - **Quote submissions** are stored automatically by Netlify Forms and can be reviewed in the Netlify dashboard.
-- **Status updates** (pending or accepted) are tracked via Netlify Blobs and managed through the admin dashboard.
+- **Status updates** (pending or accepted) mirror the submission state (`new` or `read`) and are managed through the admin dashboard.
 - **Admin access** requires the password you define in `ADMIN_PASSWORD` and uses your Netlify personal access token behind the scenes.
 
 ## 📧 Email Notifications
