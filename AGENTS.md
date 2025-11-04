@@ -3,6 +3,7 @@
 ## Project Structure & Module Organization
 - `index.html`, `styles.css`, and `script.js` deliver the static site; update copy or UI here first.
 - `netlify/functions/admin.js` drives the admin dashboard by reading Netlify form submissions and updating their state (pending vs. accepted).
+- A hidden static form at the bottom of `index.html` ensures Netlify detects the quote form even though submissions are sent via JavaScript—retain it when editing the page.
 - `assets/` contains marketing imagery; adjust or optimize files here when updating visuals.
 - Configuration roots (`netlify.toml`, `manifest.json`, `sw.js`) live alongside the site—keep changes deliberate because deployments read them directly.
 

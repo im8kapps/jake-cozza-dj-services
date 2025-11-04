@@ -60,6 +60,7 @@ npm install
 1. Deploy the site once so Netlify detects the `quote` form.
 2. In the Netlify dashboard, enable email notifications for the form so the admin receives new requests.
 3. Copy the form ID from **Site dashboard → Forms → quote → Settings & usage** for use in the admin API.
+4. The build includes a hidden static form (`index.html` near the bottom) to guarantee Netlify detects the form fields—keep it in place if you customise the modal.
 
 ### 3. Environment Variables
 
