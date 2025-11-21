@@ -535,7 +535,19 @@
 
             if (!response.ok) {
                 console.error('Failed to load quotes:', response.status, response.statusText);
-                showErrorState('Failed to load quotes', 'Verify Netlify API credentials and try again.');
+                let errorMessage = 'Verify Netlify API credentials and try again.';
+                try {
+                    const errorData = await response.json();
+                    if (errorData.message) {
+                        errorMessage = errorData.message;
+                    }
+                    if (errorData.hint) {
+                        errorMessage += `<br><br><small>${errorData.hint}</small>`;
+                    }
+                } catch (e) {
+                    // Could not parse error JSON, stick to default message
+                }
+                showErrorState(`Failed to load quotes (${response.status})`, errorMessage);
                 return;
             }
 
@@ -598,6 +610,14 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            if (window.location.protocol === 'file:') {
+                showErrorState(
+                    'Environment Error', 
+                    'The admin dashboard cannot run directly from the file system.<br>Please access this page through your Netlify site URL.'
+                );
+                return;
+            }
+
             document.querySelectorAll('.filter-button').forEach((button) => {
                 button.addEventListener('click', () => {
                     loadDashboard(button.dataset.status);

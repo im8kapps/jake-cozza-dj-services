@@ -32,6 +32,6 @@
 - Link Netlify preview URLs and any related issue numbers to streamline review.
 
 ## Security & Configuration Tips
-- Required env vars: `ADMIN_PASSWORD`, `NETLIFY_FORM_ID`, `NETLIFY_ACCESS_TOKEN`.
+- Required env vars: `ADMIN_PASSWORD`, `NETLIFY_FORM_ID`, `NETLIFY_API_TOKEN`.
 - Never hard-code credentials; use `.env.local` for local dev and keep it git-ignored.
 - When touching `admin.js`, retain the bearer check, rate-limit expensive Netlify API calls, and validate status transitions.

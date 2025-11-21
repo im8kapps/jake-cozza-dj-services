@@ -15,13 +15,13 @@ const jsonResponse = (statusCode, payload) => ({
 
 const submissionsApiBase = 'https://api.netlify.com/api/v1';
 
-const accessToken = process.env.NETLIFY_ACCESS_TOKEN;
+const accessToken = process.env.NETLIFY_API_TOKEN;
 const formId = process.env.NETLIFY_FORM_ID;
 const adminPassword = process.env.ADMIN_PASSWORD;
 
 const ensureConfig = () => {
   const missing = [];
-  if (!accessToken) missing.push('NETLIFY_ACCESS_TOKEN');
+  if (!accessToken) missing.push('NETLIFY_API_TOKEN');
   if (!formId) missing.push('NETLIFY_FORM_ID');
 
   if (missing.length) {

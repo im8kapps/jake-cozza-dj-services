@@ -70,7 +70,7 @@ npm install
 ```env
 ADMIN_PASSWORD=your-secure-password
 NETLIFY_FORM_ID=your-netlify-form-id
-NETLIFY_ACCESS_TOKEN=your-netlify-personal-access-token
+NETLIFY_API_TOKEN=your-netlify-personal-access-token
 ```
 
 > The Netlify access token needs the `forms:read` scope to fetch submissions and `forms:write` to update their state.
